@@ -7,6 +7,8 @@ package model;
 import dto.CustomerDto;
 import java.sql.*;
 import db.DBConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -77,5 +79,23 @@ public class CustomerModel {
         return rows < 0 ? "Success" : "Failed";
        
     }
+        public List<CustomerDto> searchCustomer(String id) throws ClassNotFoundException, SQLException {
+            Connection conn = DBConnection.getInstance().getConnection();
+            String query = "SELECT * FROM Customer WHERE CustID = ?";
+            
+            PreparedStatement stm = conn.prepareStatement(query);            
+            List<CustomerDto> dtos = new ArrayList<>();
+
+            ResultSet rst = stm.executeQuery();
+            while(rst.next()){
+            CustomerDto dto = new CustomerDto(rst.getString(id),
+                rst.getString(2), rst.getString(3),
+                rst.getString(4), rst.getDouble(5),
+                rst.getString(6), rst.getString(7),
+                rst.getString(8), rst.getString(9));
+                dtos.add(dto);
+            }
+            return dtos;        
+        }
     
 }
