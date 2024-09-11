@@ -20,7 +20,7 @@ public class DBConnection {
     
     public static DBConnection getInstance() throws ClassNotFoundException, SQLException {
         if(dBConnection == null) {
-            DBConnection dBConnection = new DBConnection();
+           dBConnection = new DBConnection();
         }
         return dBConnection;
     }

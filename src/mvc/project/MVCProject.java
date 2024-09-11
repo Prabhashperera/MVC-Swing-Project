@@ -4,6 +4,7 @@
  */
 package mvc.project;
 import db.DBConnection;
+import view.LayoutFrame;
 
 /**
  *
@@ -16,7 +17,9 @@ public class MVCProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hello");        
+       LayoutFrame layoutFrame = new LayoutFrame();
+       layoutFrame.setVisible(true);
+               
     }
     
 }
